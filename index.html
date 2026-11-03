@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIANA GRANDE • Greatest Hits & Song Recommender</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#08070d] text-gray-100 min-h-screen relative selection:bg-pink-500 selection:text-white">
+
+  <!-- Background Lighting & Atmospheric Glow -->
+  <div class="bg-glow-layer">
+    <div class="glow-blob-1"></div>
+    <div class="glow-blob-2"></div>
+    <div class="glow-blob-3"></div>
+  </div>
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#08070d]/80 border-b border-white/10 px-4 md:px-8 py-3.5 transition-all">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-600 via-rose-500 to-purple-600 flex items-center justify-center shadow-lg shadow-pink-500/30 group-hover:scale-105 transition transform">
+          <span class="text-white text-base">☁️</span>
+        </div>
+        <div>
+          <span class="font-display font-black text-lg tracking-wider text-white group-hover:text-pink-300 transition-colors">ARIANA</span>
+          <span class="text-[10px] tracking-widest uppercase text-pink-400 font-bold block -mt-1">GREATEST HITS</span>
+        </div>
+      </a>
+
+      <!-- Quick Action Badges -->
+      <div class="flex items-center gap-2 md:gap-3">
+        <!-- Mood Quiz Button -->
+        <button 
+          onclick="openQuizModal()"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-pink-500/10 hover:bg-pink-500/20 text-pink-300 border border-pink-500/30 hover:border-pink-500/60 active:scale-95 transition"
+        >
+          <span>💖</span>
+          <span>ค้นหาเพลงตามมู้ด</span>
+        </button>
+
+        <!-- Random Song Button -->
+        <button 
+          onclick="openRandomSongModal()"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:border-purple-500/60 active:scale-95 transition"
+        >
+          <span>🎲</span>
+          <span>สุ่มเพลงฮิต</span>
+        </button>
+
+        <!-- Saved Hits Tab Trigger -->
+        <button 
+          onclick="document.querySelector('.tab-btn[data-tab=\'favorites\']').click(); document.getElementById('explore-section').scrollIntoView({ behavior: 'smooth' });"
+          class="relative inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold glass-panel text-gray-200 hover:text-white active:scale-95 transition"
+        >
+          <span>⭐</span>
+          <span class="hidden md:inline">เพลงโปรด</span>
+          <span id="fav-count-badge" class="hidden items-center justify-center px-1.5 py-0.5 text-[10px] font-bold rounded-full bg-pink-600 text-white leading-none">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 md:px-8 max-w-7xl mx-auto text-center z-10">
+    <!-- Top Pill -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-pink-300 mb-6 backdrop-blur-md">
+      <span class="animate-pulse">✨</span>
+      <span>คู่มือสำรวจเพลงที่ดังและทรงพลังที่สุดของ Ariana Grande</span>
+    </div>
+
+    <!-- Main Hero Heading -->
+    <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display tracking-tight text-white mb-6 uppercase">
+      The Queen of <br class="hidden sm:inline">
+      <span class="text-gradient-ari">Modern Pop</span>
+    </h1>
+
+    <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-gray-300 leading-relaxed font-normal mb-8">
+      จากเสียงผิวปากหวีดสูงระดับ 4 ออกเตฟ สู่ปรากฏการณ์เพลงฮิตครองอันดับ 1 ของโลก 
+      รวมเพลงระดับตำนานที่ทุกคนต้องรู้จัก พร้อมเกร็ดประวัติ ท่อนจำ และคลิป MV ครบจบในที่เดียว
+    </p>
+
+    <!-- Key Statistics -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl mx-auto mb-10 text-left">
+      <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-pink-500">
+        <div class="text-2xl md:text-3xl font-black font-display text-white">#1 x 9</div>
+        <p class="text-xs text-pink-300/80 font-medium mt-0.5">Billboard Hot 100 Hits</p>
+      </div>
+      <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-purple-500">
+        <div class="text-2xl md:text-3xl font-black font-display text-white">95B+</div>
+        <p class="text-xs text-purple-300/80 font-medium mt-0.5">Global Spotify Streams</p>
+      </div>
+      <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-rose-500">
+        <div class="text-2xl md:text-3xl font-black font-display text-white">2x</div>
+        <p class="text-xs text-rose-300/80 font-medium mt-0.5">Grammy Award Wins</p>
+      </div>
+      <div class="glass-panel rounded-2xl p-4 border-l-4 border-l-emerald-500">
+        <div class="text-2xl md:text-3xl font-black font-display text-white">7 Eras</div>
+        <p class="text-xs text-emerald-300/80 font-medium mt-0.5">Studio Masterpieces</p>
+      </div>
+    </div>
+
+    <!-- Quick CTA buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <a 
+        href="#explore-section"
+        class="px-7 py-3.5 rounded-full bg-gradient-to-r from-pink-600 via-rose-500 to-purple-600 hover:opacity-95 text-white font-bold text-sm shadow-xl shadow-pink-500/25 transition transform active:scale-95 flex items-center gap-2"
+      >
+        <span>🎵</span>
+        <span>สำรวจเพลงฮิตทั้งหมด</span>
+      </a>
+      <button 
+        onclick="openQuizModal()"
+        class="px-6 py-3.5 rounded-full glass-panel hover:bg-white/10 text-pink-200 font-semibold text-sm transition active:scale-95 flex items-center gap-2"
+      >
+        <span>🔮</span>
+        <span>เพลงไหนเหมาะกับคุณ? (Quiz)</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Hall of Fame Spotlight Section -->
+  <section class="max-w-7xl mx-auto px-4 md:px-8 py-10 z-10 relative">
+    <div class="flex items-center justify-between mb-6">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="text-xl">👑</span>
+          <h2 class="text-2xl md:text-3xl font-black font-display text-white">TOP 5 HALL OF FAME</h2>
+        </div>
+        <p class="text-xs md:text-sm text-gray-400 mt-1">เพลงที่ทรงอิทธิพลที่สุดและสร้างประวัติศาสตร์ให้กับ Ariana Grande</p>
+      </div>
+      <span class="text-xs font-bold text-pink-400 uppercase tracking-widest hidden sm:inline">Must-Listen</span>
+    </div>
+
+    <!-- Hall of Fame Grid (Top 5 Cards) -->
+    <div id="hall-of-fame-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Main Explorer & Filter Section -->
+  <section id="explore-section" class="max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-24 z-10 relative">
+    
+    <!-- Section Title & Search Bar -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-black font-display text-white flex items-center gap-2">
+          <span>🎧</span>
+          <span>คลังเพลงฮิตทั้งหมด</span>
+        </h2>
+        <p class="text-xs md:text-sm text-gray-400 mt-1">กรองตามยุคอัลบั้ม, อารมณ์เพลง หรือค้นหาท่อนจำที่คุณนึกถึง</p>
+      </div>
+
+      <!-- Search Input Box -->
+      <div class="relative w-full md:w-80">
+        <input 
+          id="search-input"
+          type="text" 
+          placeholder="ค้นหาชื่อเพลง, ท่อนฮิต, ฟีทเจอร์..." 
+          class="w-full pl-10 pr-10 py-3 rounded-2xl bg-white/5 border border-white/10 focus:border-pink-500 focus:bg-white/10 text-white placeholder-gray-500 text-xs md:text-sm outline-none transition"
+        >
+        <span class="absolute left-3.5 top-3.5 text-gray-400 text-sm">🔍</span>
+        <button 
+          onclick="document.getElementById('search-input').value=''; state.searchQuery=''; renderSongs();" 
+          class="absolute right-3.5 top-3.5 text-gray-500 hover:text-gray-300 text-xs"
+        >
+          ✕
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabs: All vs Favorites -->
+    <div class="flex items-center gap-2 border-b border-white/10 pb-4 mb-6">
+      <button 
+        class="tab-btn active px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition flex items-center gap-1.5"
+        data-tab="all"
+      >
+        <span>🌟 เพลงทั้งหมด</span>
+      </button>
+      <button 
+        class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-bold transition flex items-center gap-1.5 text-gray-400 hover:text-white"
+        data-tab="favorites"
+      >
+        <span>⭐ เพลงที่บันทึกไว้</span>
+      </button>
+
+      <span id="song-count" class="ml-auto text-xs font-semibold text-pink-400/90 bg-pink-950/40 px-3 py-1 rounded-full border border-pink-500/20">
+        กำลังโหลด...
+      </span>
+    </div>
+
+    <!-- Filter 1: Eras (Horizontal Scrollable) -->
+    <div class="mb-5">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2 flex items-center gap-1">
+        <span>💿 เลือกตามยุคอัลบั้ม (Eras):</span>
+      </div>
+      <div id="era-filters" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <!-- Injected by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Filter 2: Mood / Vibe -->
+    <div class="mb-8">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-2 flex items-center gap-1">
+        <span>🎭 เลือกตามอารมณ์เพลง (Vibe & Mood):</span>
+      </div>
+      <div id="mood-filters" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+        <!-- Injected by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Songs Cards Grid -->
+    <div id="songs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Injected by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Ariana Grande Fun Facts Ticker -->
+  <section class="border-t border-b border-white/10 bg-white/[0.02] backdrop-blur-md py-6 px-4 md:px-8 z-10 relative">
+    <div class="max-w-4xl mx-auto text-center flex flex-col sm:flex-row items-center justify-center gap-3">
+      <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-pink-500/20 text-pink-300 border border-pink-500/30 whitespace-nowrap">
+        💡 Did You Know?
+      </span>
+      <p id="fun-fact-text" class="text-xs md:text-sm text-gray-300 transition-opacity duration-300 italic">
+        กำลังโหลดเกร็ดน่ารู้...
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-4 md:px-8 border-t border-white/5 text-center text-gray-500 text-xs z-10 relative">
+    <div class="max-w-5xl mx-auto space-y-3">
+      <p class="font-display font-bold text-gray-400 tracking-wider text-sm">
+        ARIANA GRANDE • GREATEST HITS SHOWCASE
+      </p>
+      <p>
+        สร้างขึ้นเพื่อแฟนเพลงและผู้ที่ต้องการทำความรู้จักกับผลงานเพลงระดับตำนานของ Ariana Grande • ข้อมูลเพลงและสถิติจาก Billboard & Spotify
+      </p>
+      <div class="flex items-center justify-center gap-4 pt-2 text-pink-400">
+        <a href="https://www.arianagrande.com" target="_blank" rel="noopener" class="hover:underline">Official Website</a>
+        <span>•</span>
+        <a href="https://open.spotify.com/artist/66CXWjxzNUsdJxUhNeWXMv" target="_blank" rel="noopener" class="hover:underline">Spotify Profile</a>
+        <span>•</span>
+        <a href="https://www.youtube.com/user/ArianaGrandeVevo" target="_blank" rel="noopener" class="hover:underline">YouTube VEVO</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- 1. Video Player Modal (YouTube Embed) -->
+  <div id="video-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="modal-content-box w-full max-w-4xl bg-[#120f1d] border border-white/15 rounded-3xl overflow-hidden shadow-2xl relative">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between p-4 md:px-6 border-b border-white/10 bg-black/40">
+        <div>
+          <h3 id="video-modal-title" class="font-bold text-base md:text-lg text-white font-display">ชื่อเพลง</h3>
+          <p id="video-modal-subtitle" class="text-xs text-pink-400">สถิติและข้อมูลอัลบั้ม</p>
+        </div>
+        <button id="video-modal-close" class="p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Responsive Video Player Container -->
+      <div class="relative w-full aspect-video bg-black">
+        <iframe 
+          id="video-frame" 
+          class="absolute inset-0 w-full h-full" 
+          src="" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Mood Quiz Modal ("Which Ariana Song Are You?") -->
+  <div id="quiz-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="modal-content-box w-full max-w-xl bg-[#141021] border border-pink-500/30 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+      <!-- Close Button -->
+      <button id="quiz-modal-close" class="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition">
+        ✕
+      </button>
+
+      <div id="quiz-content">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Random Song Generator Modal -->
+  <div id="random-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="modal-content-box w-full max-w-lg bg-[#141021] border border-white/15 rounded-3xl p-6 md:p-8 shadow-2xl relative">
+      <button id="random-modal-close" class="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 text-gray-400 hover:text-white transition">
+        ✕
+      </button>
+
+      <div id="random-result-box">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Popup -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-[#1b152b] border border-pink-500/40 text-white text-xs md:text-sm font-medium shadow-2xl">
+    <span id="toast-icon">💖</span>
+    <span id="toast-msg">ข้อความแจ้งเตือน</span>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="songs-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
